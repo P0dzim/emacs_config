@@ -36,4 +36,3 @@
 ;; 5. TEMA VISUAL
 (load-theme 'doom-acario-dark t)
 (doom-themes-neotree-config)
-;; --- O Emacs escreverá automaticamente abaixo desta linha ---

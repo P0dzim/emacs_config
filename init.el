@@ -36,3 +36,6 @@
 ;; 5. TEMA VISUAL
 (load-theme 'doom-acario-dark t)
 (doom-themes-neotree-config)
+
+;; 6. ADICIONA ATALHO PARA CABEÇALHO PADRÃO
+(if (file-exists-p "~/.emacs.d/stdheader.el") (load-file "~/.emacs.d/stdheader.el"))

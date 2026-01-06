@@ -6,12 +6,17 @@
 (scroll-bar-mode -1)
 (global-display-line-numbers-mode 1) ;; Ativa números de linha globalmente
 
+;; Configura o tab para indentação
+(setq-default tab-width 4)
+(setq-default indent-tabs-mode t)
+(global-set-key (kbd "TAB") (lambda () (interactive) (insert "\t")))
+
 ;; 2. GERENCIADOR DE PACOTES
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
-;; Instala pacotes essenciais automaticamente
+;; Instala pacotes de configuração
 (setq my-packages '(neotree company doom-themes all-the-icons nerd-icons))
 (unless package-archive-contents (package-refresh-contents))
 (dolist (p my-packages)
@@ -23,7 +28,7 @@
 (require 'all-the-icons)
 (require 'neotree)
 
-;; Muda o newtree para abrir com C-\
+;; Muda o neotree para abrir com C-\
 (global-set-key (kbd "C-\\") 'neotree-toggle)
 
 ;; 4. AUTOCOMPLETE (COMPANY)

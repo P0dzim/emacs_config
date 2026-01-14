@@ -6,8 +6,8 @@
 (scroll-bar-mode -1)
 (global-display-line-numbers-mode 1) ;; Ativa números de linha globalmente
 (defalias 'yes-or-no-p 'y-or-n-p) ;; Responder perguntas com apenas y ou n
-(delete-selection-mode 1) ;; Não coloca o texto removido na área de texto copiado
-
+(delete-selection-mode 1)  ;; Não coloca o texto removido na área de texto copiado
+(column-number-mode t)
 
 ;; Cria hook de comportamento para a norminette
 (defun c-hook-fun()
@@ -22,7 +22,7 @@
                       64 68 72 76 80 84 88 92 96
                     100 104 108 112 116 120))
   (local-set-key (kbd "TAB") #'self-insert-command)
-  (local-set-key (kbd "C-c e o") #'ff-get-other-file) ;; Abre o outro arquivo, se .c abre o .o e vice-versa
+00  (local-set-key (kbd "C-c e o") #'ff-get-other-file) ;; Abre o outro arquivo, se .c abre o .o e vice-versa
   (electric-indent-mode nil))
 
 ;; Seta o hook para C e C++
@@ -35,7 +35,7 @@
 (package-initialize)
 
 ;; Instala pacotes essenciais automaticamente
-(setq my-packages '(neotree company doom-themes all-the-icons nerd-icons vterm xclip))
+(setq my-packages '(neotree company doom-themes all-the-icons nerd-icons xclip))
 (unless package-archive-contents (package-refresh-contents))
 (dolist (p my-packages)
   (unless (package-installed-p p)
@@ -72,7 +72,7 @@
 (global-set-key (kbd "C-e") 'open-terminal)
 
 ;; 8. CONFIGURA O WINDMOVE
-(windmove-default-keybindings 'meta)
+(windmove-default-keybindings 'meta) ;; Muda de janela com X-(set)
 
 ;; 9. SALVA OS ARQUIVOS TEMPORÁRIOS E DE BACKUP EM PASTAS ESPECÍFICA
 (defvar backup-dir "~/.emacs.d/backups")

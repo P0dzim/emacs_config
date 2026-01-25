@@ -22,7 +22,7 @@
                       64 68 72 76 80 84 88 92 96
                     100 104 108 112 116 120))
   (local-set-key (kbd "TAB") #'self-insert-command)
-00  (local-set-key (kbd "C-c e o") #'ff-get-other-file) ;; Abre o outro arquivo, se .c abre o .o e vice-versa
+  (local-set-key (kbd "C-c e o") #'ff-get-other-file) ;; Abre o outro arquivo, se .c abre o .o e vice-versa
   (electric-indent-mode nil))
 
 ;; Seta o hook para C e C++
@@ -35,7 +35,7 @@
 (package-initialize)
 
 ;; Instala pacotes essenciais automaticamente
-(setq my-packages '(neotree company doom-themes all-the-icons nerd-icons xclip))
+(setq my-packages '(neotree company doom-themes all-the-icons nerd-icons xclip multiple-cursors))
 (unless package-archive-contents (package-refresh-contents))
 (dolist (p my-packages)
   (unless (package-installed-p p)
@@ -75,8 +75,8 @@
 (windmove-default-keybindings 'meta) ;; Muda de janela com X-(set)
 
 ;; 9. SALVA OS ARQUIVOS TEMPORÁRIOS E DE BACKUP EM PASTAS ESPECÍFICA
-(defvar backup-dir "~/.emacs.d/backups")
-(defvar temp-dir "~/.emacs.d/temp_files")
+(defvar backup-dir "~/.emacs.d/backups/")
+(defvar temp-dir "~/.emacs.d/temp_files/")
 
 (unless (file-exists-p backup-dir)
   (make-directory backup-dir t))
@@ -91,3 +91,10 @@
 ;; 10. COMPARTILHA A SESSÃO DE COPIAR E COLAR DO SISTEMA COM O EMACS (PARA A VERSÃO TERMINAL)
 (require 'xclip)
 (xclip-mode 1)
+
+;; 11. CONFIGURA MULTIPLOS CURSORES
+(require 'multiple-cursors)
+(global-set-key (kbd "C-c n") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-c p") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-a") 'mc/mark-all-like-this)
+(global-set-key (kbd "C-c s") 'mc/skip-to-next-like-this)

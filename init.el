@@ -35,7 +35,7 @@
 (package-initialize)
 
 ;; Instala pacotes essenciais automaticamente
-(setq my-packages '(neotree company doom-themes all-the-icons nerd-icons xclip multiple-cursors))
+(setq my-packages '(neotree company doom-themes all-the-icons nerd-icons xclip multiple-cursors eglot))
 (unless package-archive-contents (package-refresh-contents))
 (dolist (p my-packages)
   (unless (package-installed-p p)
@@ -98,3 +98,10 @@
 (global-set-key (kbd "C-c p") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-a") 'mc/mark-all-like-this)
 (global-set-key (kbd "C-c s") 'mc/skip-to-next-like-this)
+
+;; 12. CONFIGURA O EGLOT
+(require 'eglot)
+(setq eglot-events-buffer-size 0) ;; Não logar tudo (deixa mais rápido)
+(setq eglot-sync-connect 0)       ;; Não travar o Emacs enquanto conecta
+(add-hook 'c-mode-hook 'eglot-ensure) ;; Garante que o eglot esteja ativo para .c 
+(add-hook 'c++-mode-hook 'eglot-ensure) ;; Garante que o eglot esteja ativo para .cpp
